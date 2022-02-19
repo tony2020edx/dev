@@ -1,3 +1,5 @@
+#codeforces 1 1504A Python Solution
+
 def palindrome(user_input):
     if user_input == user_input[::-1]:
         return True
