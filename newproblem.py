@@ -1,13 +1,8 @@
 
-#function to create take a string as input, then return a string in a way that the first element is added once, the second twice and so on.
 
-s = input("Enter a string: ")
+#function to shitf the character in the string to the right by n
 
-def con(s):
-    new = ""
-    for i in range(len(s)):
-        new += s[i] * (i+1)
-    return new
+def shift(string, n):
+    return string[n:] + string[:n]
 
-
-print(con(s))
+print(shift("abc", 1))
