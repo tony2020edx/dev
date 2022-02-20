@@ -13,7 +13,10 @@ for i in range(q):
 
     result = 0
 
-    set_sub_segment = list(dict.fromkeys(sub_segment ))
+    set_sub_segment = []
+
+    set_sub_segment = [x for x in sub_segment if x not in set_sub_segment and x != ' ']
+
 
     for j in set_sub_segment:
         count = sub_segment.count(j)

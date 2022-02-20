@@ -13,7 +13,7 @@ for i in range(q):
 
     result = 0
 
-    set_sub_segment = list(dict.fromkeys(sub_segment ))
+    set_sub_segment = set(sub_segment)  # generate set of sub sequence
 
     for j in set_sub_segment:
         count = sub_segment.count(j)
