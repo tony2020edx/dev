@@ -9,4 +9,5 @@ def con(s):
         new += s[i] * (i+1)
     return new
 
+
 print(con(s))
