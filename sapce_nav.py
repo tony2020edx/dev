@@ -1,30 +1,24 @@
 t = int(input())
 
 for j in range(t):
-    px, py = map(int, input().split())
+
+    x, y = map(int, input().split())
     s = input()
-    R_count = s.count('R')
-    U_count = s.count('U')
-    D_count = s.count('D')
-    L_count = s.count('L')
 
-    flag = 0
+    x_dir, y_dir = 0, 0
 
-    if px >= 0 and py >= 0:
-        if U_count >= py and R_count >= px:
-            flag = 1
-    elif px < 0 and py >= 0:
-        if U_count >= py and L_count >= abs(px):
-            flag = 1
-    elif px < 0 and py < 0:
-        if L_count >= abs(px) and D_count >= abs(py):
-            flag = 1
-    elif px >= 0 and py < 0:
-        if R_count >= px and D_count >= abs(py):
-            flag = 1
+    for i in range(len(s)):
 
-    if flag == 0:
-        print('NO')
+        if s[i] == 'R' and x > 0:
+            x_dir += 1
+        elif s[i] == 'L' and x < 0:
+            x_dir -= 1
+        elif s[i] == 'U' and y > 0:
+            y_dir += 1
+        elif s[i] == 'D' and y < 0:
+            y_dir -= 1
+
+    if abs(x_dir) >= abs(x) and abs(y_dir) >= abs(y):
+        print("YES")
     else:
-        print('YES')
-
+        print("NO")
