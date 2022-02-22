@@ -1,63 +1,54 @@
-# Python3 program to print all combination
-# of size r in an array of size n
+import itertools
 
-''' arr[] ---> Input Array
-	chosen[] ---> Temporary array to store
-			current combination
-	start & end ---> Starting and Ending indexes in arr[]
-	r---> Size of a combination to be printed
+res = []
 
-	'''
+for i in range(0, 10):
 
+    k = list(itertools.product(['a', 'b', 'c'], repeat=i))
 
-def CombinationRepetitionUtil(chosen, arr, index,
-                              r, start, end):
-    # Current combination is ready,
-    # print it
-    if index == r:
-        for j in range(r):
-            print(chosen[j], end=" ")
+    for j in k:
+        if len(j) >= 2 and j.count('a') > j.count('b') and j.count('a') > j.count('c'):
+            if j not in res:
+                res.append(''.join(j))
 
-        print()
-        return
+print(res)
+print(len(res))
 
-    # When no more elements are
-    # there to put in chosen[]
-    if start > n:
-        return
+new_res = []
 
-    # Current is included, put
-    # next at next location
-    chosen[index] = arr[start]
-
-    # Current is excluded, replace it
-    # with next (Note that i+1 is passed,
-    # but index is not changed)
-    CombinationRepetitionUtil(chosen, arr, index + 1,
-                              r, start, end)
-    CombinationRepetitionUtil(chosen, arr, index,
-                              r, start + 1, end)
+for j in res:
+    if j.count('a') == 3 and j.count('bb') == 1 and j.count('cc') == 1 and j[0] == 'a' and j[-1] == 'a':
+        new_res.append(j)
+    if j.count('a') == 2 and j.count('b') == 1 and j.count('c') == 1 and j[0] == 'a' and j[-1] == 'a':
+        new_res.append(j)
+    if j.count('a') == 2 and j.count('b') == 0 and j.count('c') == 0 and j[0] == 'a' and j[-1] == 'a':
+        new_res.append(j)
+    if j.count('a') == 2 and j.count('b') == 1 and j.count('c') == 0 and j[0] == 'a' and j[-1] == 'a':
+        new_res.append(j)
+    if j.count('a') == 2 and j.count('b') == 0 and j.count('c') == 1 and j[0] == 'a' and j[-1] == 'a':
+        new_res.append(j)
 
 
-# The main function that prints all
-# combinations of size r in arr[] of
-# size n. This function mainly uses
-# CombinationRepetitionUtil()
-def CombinationRepetition(arr, n, r):
-    # A temporary array to store
-    # all combination one by one
-    chosen = [0] * r
 
-    # Print all combination using
-    # temporary array 'chosen[]'
-    CombinationRepetitionUtil(chosen, arr, 0, r, 0, n)
+print(len(new_res))
+print(new_res)
+
+new_new_res = ['aa']
+
+for i in new_res:
+    if i.count('aa') == 0:
+        new_new_res.append(i)
+print(new_new_res)
+print(len(new_new_res))
 
 
-# Driver code
-arr = [1, 2, 3, 4]
-r = 2
-n = len(arr) - 1
 
-CombinationRepetition(arr, n, r)
 
-# This code is contributed by Vaibhav Kumar 12.
+
+
+
+
+
+
+
+
