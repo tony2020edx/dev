@@ -11,9 +11,6 @@ for i in range(0, 10):
             if j not in res:
                 res.append(''.join(j))
 
-print(res)
-print(len(res))
-
 new_res = []
 
 for j in res:
